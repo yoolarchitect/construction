@@ -38,7 +38,7 @@ export function AdminLoginForm() {
           required
           autoComplete="email"
           className="mt-1 block w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 sm:text-sm"
-          placeholder="admin@dhisme.so"
+          placeholder="admin@yoolartchitect.com"
         />
       </div>
       <div>
