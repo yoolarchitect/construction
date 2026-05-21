@@ -7,15 +7,18 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:full": "prisma generate && next build",
+    "build": "prisma generate && prisma db push && next build",
+    "build:full": "prisma generate && prisma db push && next build",
+    "vercel-build": "prisma generate && prisma db push && next build",
     "prisma:generate": "prisma generate",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
+    "db:deploy": "prisma db push",
     "db:studio": "prisma studio",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "prisma db push && tsx prisma/seed.ts",
+    "db:setup": "prisma db push && tsx prisma/seed.ts"
   },
   "dependencies": {
     "@imagekit/next": "^2.1.5",

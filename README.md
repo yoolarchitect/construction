@@ -50,10 +50,22 @@ Multi-tenant SaaS for tracking construction project investments.
 
 All business data is scoped by `tenantId`. Queries filter by `tenantId`; no cross-tenant access.
 
+## Vercel deployment
+
+1. In **Vercel → Project → Settings → Environment Variables**, set `DATABASE_URL` (Neon pooled URL with `sslmode=require`) for **Production**, **Preview**, and **Development** — the build runs `prisma db push`, which needs database access.
+2. Redeploy after saving env vars. The build syncs tables from `schema.prisma` (including `Organization`).
+3. Once deploy succeeds, run the seed **once** against production (locally with production `DATABASE_URL`, or Neon SQL console is not enough — use):
+
+   ```bash
+   npm run db:seed
+   ```
+
+   This creates the admin user and organization row if missing.
+
 ## Scripts
 
 - `npm run dev` – dev server
-- `npm run build` – Prisma generate + Next build
-- `npm run db:push` – push schema to DB
-- `npm run db:seed` – create default admin (if missing)
+- `npm run build` – Prisma generate, `db push` (sync schema), Next build
+- `npm run db:push` / `npm run db:deploy` – push schema to DB
+- `npm run db:seed` – create default admin and organization (if missing)
 - `npm run db:studio` – Prisma Studio
