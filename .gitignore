@@ -1,0 +1,19 @@
+node_modules/
+.next/
+
+# env files / secrets
+.env
+.env*.local
+
+# build artifacts
+dist/
+out/
+coverage/
+.turbo/
+.swc/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
